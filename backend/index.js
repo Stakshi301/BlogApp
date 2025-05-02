@@ -15,7 +15,7 @@ const PORT = process.env.PORT || 3000;
 
 const corsOption={
   origin:"https://blogapp-3ul0.onrender.com",
-  Credential:true
+  credentials:true
 }
 app.use(cors(corsOption));
 app.use(express.json());
