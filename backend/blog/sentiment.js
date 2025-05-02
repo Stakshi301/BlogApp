@@ -12,10 +12,15 @@ ${postDescription}
     const response = await axios({
       method: "POST",
       url: "https://open-ai21.p.rapidapi.com/conversationllama",
+      // headers: {
+      //   "Content-Type": "application/json",
+      //   "x-rapidapi-host": "sentimental-analysis1.p.rapidapi.com",
+      //   "x-rapidapi-key": "e2b44d42dbmsh677584571a518fbp1dba0fjsnd9e2733d16da",
+      // }
       headers: {
         "Content-Type": "application/json",
-        "x-rapidapi-host": "sentimental-analysis1.p.rapidapi.com",
-        "x-rapidapi-key": "e2b44d42dbmsh677584571a518fbp1dba0fjsnd9e2733d16da",
+        "x-rapidapi-host": "open-ai21.p.rapidapi.com",
+        "x-rapidapi-key": "your-api-key-here"
       },
       data: {
         messages: [{ role: "user", content: prompt }],
