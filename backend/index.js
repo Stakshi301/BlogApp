@@ -13,7 +13,11 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(cors());
+const corsOption={
+  origin:"https://blogapp-3ul0.onrender.com",
+  Credential:true
+}
+app.use(cors(corsOption));
 app.use(express.json());
 
 connectToMongoDB();
