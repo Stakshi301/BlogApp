@@ -39,16 +39,44 @@ export async function signupController(req, resp) {
   }
 }
 
-export async function loginController(req, resp) {
-  const { email, password } = req.body;
-  console.log("Email valid?", validateEmail(email)); 
-  console.log("Password valid?", validatePassword(password));
-    if (!validateEmail(email) || !validatePassword(password)) {
-    return resp.status(400).json({ message: "Invalid credentials" });
-  }
+// export async function loginController(req, resp) {
+//   const { email, password } = req.body;
+//   console.log("Email valid?", validateEmail(email)); 
+//   console.log("Password valid?", validatePassword(password));
+//     if (!validateEmail(email) || !validatePassword(password)) {
+//     return resp.status(400).json({ message: "Invalid credentials" });
+//   }
 
-  const result = await authenticateUser(req.body);
-  const statusCode = result.status;
-  delete result.status;
-  resp.status(statusCode).json({ ...result });
+//   const result = await authenticateUser(req.body);
+//   const statusCode = result.status;
+//   delete result.status;
+//   resp.status(statusCode).json({ ...result });
+// }
+
+
+export async function loginController(req, resp) {
+  try {
+    const { email, password } = req.body;
+    console.log("Email valid?", validateEmail(email));
+    console.log("Password valid?", validatePassword(password));
+
+    if (!validateEmail(email) || !validatePassword(password)) {
+      return resp.status(400).json({ message: "Invalid credentials" });
+    }
+
+    const result = await authenticateUser(req.body);
+
+    if (!result || typeof result !== 'object' || !result.status) {
+      return resp.status(500).json({ message: "Internal error" });
+    }
+
+    const statusCode = result.status;
+    delete result.status;
+
+    return resp.status(statusCode).json({ ...result });
+
+  } catch (error) {
+    console.error("Login Error:", error);
+    return resp.status(500).json({ message: "Login failed due to server error" });
+  }
 }
