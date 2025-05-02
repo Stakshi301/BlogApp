@@ -21,7 +21,7 @@ export async function authenticateMiddleware(req, resp, next) {
         .json({ message: "Invalid user! please login again" });
     }
     req.userId = claims.userId;
-    next();
+    next(); 
   } catch (error) {
     if (error instanceof TokenExpiredError) {
       console.log("token is expired");

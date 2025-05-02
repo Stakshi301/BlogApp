@@ -33,7 +33,7 @@ export default function AddComment({ blogId }) {
     <div>
       <div className="add-comment-container">
         <input placeholder="Enter comment" ref={inputRef} />
-        <span className="material-icons add-icon" onClick={addComment}>
+        <span  className="material-icons add-icon" onClick={addComment}>
           maps_ugc
         </span>
       </div>

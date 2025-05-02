@@ -8,7 +8,7 @@ const MAX_DB_RETRY_CONNECTIONS = process.env.MAX_DB_RETRY_CONNECTIONS;
 let retries = 0;
 
 export async function connectToMongoDB() {
-  console.log("Connecting to mongoDB");
+  console.log("Connecting to mongoDB"); 
   try {
     retries++;
     const unused = await mongoose.connect(DATABASE_URL);
@@ -20,6 +20,6 @@ export async function connectToMongoDB() {
       connectToMongoDB();
     } else {
       console.log("Failed to connect: max retries exceeded");
-    }
+    } 
   }
 }

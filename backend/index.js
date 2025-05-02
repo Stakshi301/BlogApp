@@ -7,20 +7,28 @@ import BlogRouter from "./routes/BlogRouter.js";
 import CommentRouter from "./routes/CommentRoutes.js";
 import GenresRouter from "./routes/GenreRoutes.js";
 import { getSentiment } from "./blog/sentiment.js";
+import path from "path";
 
 dotenv.config();
 const app = express();
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json());
 
 connectToMongoDB();
 
+const _dirname=path.resolve();
+
 app.use("/auth", AuthRouter);
 app.use("/blog", BlogRouter);
 app.use("/comment", CommentRouter);
 app.use("/genres", GenresRouter);
+
+app.use(express.static(path.join(_dirname, "/frontend/dist"))); 
+app.get('*', (req,res)=>{  
+  res.sendFile(path.resolve(_dirname, "frontend", "dist", "index.html"));
+})
 
 app.listen(PORT, () => {
   console.log(`app is listening at port ${PORT}`); 

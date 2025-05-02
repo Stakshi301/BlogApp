@@ -31,7 +31,6 @@ export async function authenticateUser({ email, password }) {
   if (!user) {
     return { message: "Invalid user credentials", status: 400 };
   }
-  console.log("Password valid:", validatePassword("Stakshi@905"));
 
   const isPasswordMatched = await bcrypt.compare(password, user.password);
   if (!isPasswordMatched) {

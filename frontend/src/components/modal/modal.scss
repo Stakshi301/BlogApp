@@ -6,14 +6,28 @@
   padding-bottom: 2rem;
   z-index: 100;
   width: min(80vw, 500px);
-  background-color: #fff;
+  // background-color: #fff;
+    background: linear-gradient(135deg, #6b11cb50 0%, #2574fc80 100%);
+  
+  
   box-shadow: 2px 2px 20px #e3e3e3;
+  border: 1px solid black;
+  border-radius:10px;
+  margin: 1rem;
   .popup-header {
     padding: 10px;
     display: flex;
     flex-direction: row-reverse;
+    color: white;
     .close-btn {
       cursor: pointer;
     }
   }
 }
+
+.close-btn{
+  background-color: #7D81E7;
+  border-radius:5px ;
+}
+
+

@@ -14,8 +14,8 @@ ${postDescription}
       url: "https://open-ai21.p.rapidapi.com/conversationllama",
       headers: {
         "Content-Type": "application/json",
-        "x-rapidapi-host": "open-ai21.p.rapidapi.com",
-        "x-rapidapi-key": "7204430a99msh429d38d58e7c526p15c2bcjsn930ca895f5ff",
+        "x-rapidapi-host": "sentimental-analysis1.p.rapidapi.com",
+        "x-rapidapi-key": "e2b44d42dbmsh677584571a518fbp1dba0fjsnd9e2733d16da",
       },
       data: {
         messages: [{ role: "user", content: prompt }],
@@ -28,3 +28,5 @@ ${postDescription}
     return { success: false, message: error.message };
   }
 }
+
+
